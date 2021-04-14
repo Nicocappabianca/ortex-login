@@ -6,6 +6,7 @@ export const globalStyles = css.global`
   :root {
     --black: ${Colors.black.toCSS()};
     --white: ${Colors.white.toCSS()};
+    --red: ${Colors.red.toCSS()};
 
     --retina-value: 3;
 
@@ -66,8 +67,8 @@ export const globalStyles = css.global`
     text-rendering: optimizeSpeed;
     line-height: 1.5;
     font-family: var(--f-roboto);
-    background-color: var(--white);
-    color: var(--black);
+    background-color: var(--black);
+    color: var(--white);
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

@@ -2,7 +2,8 @@ import Color from 'color-js';
 
 export const Colors = {
   black: Color('#000000'),
-  white: Color('#ffffff')
+  white: Color('#ffffff'),
+  red: Color('#f44336')
 };
 
 export const Media = {
@@ -32,5 +33,5 @@ export const AppData = {
   title: 'Ortex',
   siteName: 'Ortex Technical Task',
   description: 'Ortex Technical Task',
-  siteUrl: '',
+  siteUrl: ''
 };

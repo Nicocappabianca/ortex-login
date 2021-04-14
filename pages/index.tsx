@@ -1,10 +1,12 @@
 import React, { FC } from 'react';
+import { Layout, LoginForm, BackgroundVideo } from '@/components';
 
 const Home: FC = () => {
   return (
-    <div>
-      <h1>Ortex</h1>
-    </div>
+    <Layout>
+      <BackgroundVideo />
+      <LoginForm />
+    </Layout>
   );
 };
 
