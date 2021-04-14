@@ -10,10 +10,10 @@ export const globalStyles = css.global`
     --retina-value: 3;
 
     /* Fonts */
-    /* century_gothic */
-    /* century_gothic_bold */
-    --f-century-gothic: 'century_gothic';
-    --f-century-gothic-bold: 'century_gothic_bold';
+    /* roboto */
+    /* roboto-bold */
+    --f-roboto: 'roboto';
+    --f-roboto-bold: 'roboto-bold';
 
     font-size: 16px;
 
@@ -65,7 +65,7 @@ export const globalStyles = css.global`
     scroll-behavior: smooth;
     text-rendering: optimizeSpeed;
     line-height: 1.5;
-    font-family: var(--f-century-gothic);
+    font-family: var(--f-roboto);
     background-color: var(--white);
     color: var(--black);
 
@@ -154,4 +154,21 @@ export const globalStyles = css.global`
   /*
   * Fonts
   */
+  @font-face {
+    font-family: 'roboto';
+    src: url('/fonts/Roboto-Regular.woff2') format('woff2'),
+      url('/fonts/Roboto-Regular.woff') format('woff');
+    font-weight: regular;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'roboto-bold';
+    src: url('/fonts/Roboto-Bold.woff2') format('woff2'),
+      url('/fonts/Roboto-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
 `;
