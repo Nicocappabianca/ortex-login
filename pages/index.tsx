@@ -1,20 +1,18 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { Layout, LoginForm, BackgroundVideo, ResetPasswordForm, AppHead } from '@/components';
-// import { io } from "socket.io-client";
 
 const Home: FC = () => {
   const [showResetPassword, setShowResetPassword] = useState(false);
 
-  // TODO: Connect to web socket and show data
-  // const socket = io("ws://stream.tradingeconomics.com/?client=guest:guest", {
-  //   reconnectionDelayMax: 10000,
-  //   query: {
-  //     "topic": "subscribe",
-  //     "to": "EURUSD:CUR"
-  //   },
-  // });
-
-  // console.log(socket);
+  useEffect(() => {
+    const socket = new WebSocket('ws://stream.tradingeconomics.com/?client=guest:guest');
+    socket.onopen = (event: any) => {
+      if (event.currentTarget.readyState == 1) {
+        socket.send(JSON.stringify({ topic: 'subscribe', to: 'EURUSD:CUR' }));
+        socket.onmessage = (data) => console.log(data);
+      }
+    };
+  }, []);
 
   return (
     <>
