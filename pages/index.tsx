@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { Layout, LoginForm, BackgroundVideo } from '@/components';
+import { Layout, LoginForm, BackgroundVideo, ResetPasswordForm } from '@/components';
 
 const Home: FC = () => {
   const [showResetPassword, setShowResetPassword] = useState(false);
@@ -8,7 +8,10 @@ const Home: FC = () => {
     <Layout>
       <BackgroundVideo />
       {showResetPassword ? (
-        <p className="over-background">reset password</p>
+        <ResetPasswordForm
+          className="over-background"
+          backToLogin={() => setShowResetPassword(false)}
+        />
       ) : (
         <LoginForm className="over-background" resetPassword={() => setShowResetPassword(true)} />
       )}
