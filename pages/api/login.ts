@@ -10,7 +10,7 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
       res.statusCode = 200;
       res.send({
         error: false,
-        message: 'prospect save success!'
+        message: 'login successful!'
       });
     }
   } else {

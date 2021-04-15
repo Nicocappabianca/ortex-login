@@ -4,7 +4,12 @@ import Fade from 'react-reveal/Fade';
 import SVG from 'react-inlinesvg';
 import axios from 'axios';
 
-const LoginForm: FC = () => {
+type LoginFormProps = {
+  resetPassword: () => void;
+  className?: string;
+};
+
+const LoginForm: FC<LoginFormProps> = ({ resetPassword, className }) => {
   const [email, setEmail] = useState<string | null>(null);
   const [emailError, setEmailError] = useState(false);
 
@@ -39,7 +44,10 @@ const LoginForm: FC = () => {
 
   return (
     <Fade top>
-      <form className="login-form" method="post" onSubmit={submitForm}>
+      <form
+        className={`login-form ${className ? className : ''}`}
+        method="post"
+        onSubmit={submitForm}>
         <SVG className="login-form__logo" src="/icons/logo.svg" />
         <div className="login-form__inputs">
           <FloatingLabel
@@ -68,7 +76,9 @@ const LoginForm: FC = () => {
           disabled={emailError || !email || !password || processingLogin}
         />
 
-        <p className="login-form__reset-password link">Forgot your password?</p>
+        <p className="login-form__reset-password link" onClick={resetPassword} aria-hidden="true">
+          Forgot your password?
+        </p>
         <a className="link" href="mailto:support@ortex.com">
           Contact us - support@ortex.com
         </a>
@@ -76,12 +86,6 @@ const LoginForm: FC = () => {
 
       <style jsx>{`
         .login-form {
-          position: fixed;
-          top: 0px;
-          right: 0px;
-          bottom: 0px;
-          left: 0px;
-          margin: auto;
           padding-top: 30px;
 
           display: flex;
