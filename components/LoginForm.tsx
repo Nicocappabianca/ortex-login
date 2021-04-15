@@ -1,7 +1,8 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, FormEvent } from 'react';
 import { FloatingLabel, Button } from '@/components';
 import Fade from 'react-reveal/Fade';
 import SVG from 'react-inlinesvg';
+import axios from 'axios';
 
 const LoginForm: FC = () => {
   const [email, setEmail] = useState<string | null>(null);
@@ -9,9 +10,36 @@ const LoginForm: FC = () => {
 
   const [password, setPassword] = useState<string | null>(null);
 
+  const [buttonText, setButtonText] = useState('Login');
+  const [processingLogin, setProcessingLogin] = useState(false);
+
+  const submitForm = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (email && password) {
+      setProcessingLogin(true);
+      axios
+        .post('/api/login', { email: email, password: password })
+        .then(() => {
+          alert('logged');
+        })
+        .catch(() => {
+          setButtonText('¡Error!');
+        });
+    }
+
+    setEmail(null);
+    setPassword(null);
+    setProcessingLogin(false);
+
+    setTimeout(() => {
+      setButtonText('Login');
+    }, 3000);
+  };
+
   return (
     <Fade top>
-      <form className="login-form">
+      <form className="login-form" method="post" onSubmit={submitForm}>
         <SVG className="login-form__logo" src="/icons/logo.svg" />
         <div className="login-form__inputs">
           <FloatingLabel
@@ -34,7 +62,11 @@ const LoginForm: FC = () => {
           />
         </div>
 
-        <Button className="login-form__button" label={`login`} />
+        <Button
+          className="login-form__button"
+          label={buttonText}
+          disabled={emailError || !email || !password || processingLogin}
+        />
 
         <p className="login-form__reset-password link">Forgot your password?</p>
         <a className="link" href="mailto:support@ortex.com">
@@ -91,7 +123,7 @@ const LoginForm: FC = () => {
           }
 
           &__reset-password {
-            padding: 20px 0 10px 0;
+            padding: 25px 0 10px 0;
           }
         }
       `}</style>
