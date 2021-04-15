@@ -4,6 +4,8 @@ const BackgroundVideo: FC = () => {
   return (
     <video className="background-video" autoPlay muted loop>
       <source src="/videos/background.mp4" type="video/mp4" />
+      <source src="/videos/background.webm" type="video/webm" />
+      <source src="/videos/background.ogg" type="video/ogg" />
 
       <style jsx>{`
         .background-video {
