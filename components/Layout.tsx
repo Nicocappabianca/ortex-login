@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { Header } from '@/components';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -7,6 +8,7 @@ type LayoutProps = {
 const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <section className="layout">
+      <Header />
       <main className="layout__main">{children}</main>
 
       <style jsx>{`

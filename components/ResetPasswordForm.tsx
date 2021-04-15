@@ -89,9 +89,13 @@ const ResetPasswordForm: FC<ResetPasswordFormProps> = ({ className, backToLogin 
           background: rgba(000, 000, 000, 0.7);
           width: 500px;
           max-width: 95%;
-          height: 500px;
+          height: 485px;
           border-radius: 10px;
           border: 2px solid rgba(255, 255, 255, 0.5);
+
+          @media (--medium) {
+            height: 500px;
+          }
 
           &__title {
             margin: 0px;
